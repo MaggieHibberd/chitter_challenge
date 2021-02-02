@@ -20,5 +20,13 @@ describe Peep do
       expect(peep).to include('Aint got time to bleed')
     end
   end 
+  describe '.create' do 
+    it 'creates a new peep' do 
+        Peep.create(content: 'And now we are here(10)')
+
+        expect(Peep.all).to include 'And now we are here(10)'
+      end
+    end
+
 end 
 
