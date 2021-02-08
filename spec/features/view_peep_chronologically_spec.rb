@@ -6,6 +6,7 @@ feature 'Viewing peep in chronological order' do
     Peep.create(content: 'Aint got time to bleed')
 
     peeps = Peep.all
+    
 
 
     # [{content: 'hello arnie', timestamp: '22:05'}, {content: 'hello arnie', timestamp: '22:05'}, {content: 'hello arnie', timestamp: '22:05'}]
