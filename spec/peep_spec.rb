@@ -3,33 +3,32 @@ require 'peep'
 describe Peep do 
   describe '.all' do 
     it 'returns all of the peeps' do 
-      # connection = PG.connect(dbname: 'chitter_manager_test')
-
       # below may be of use when we add users
       # user1 = User.create(email: "maggieh@gmail.com", password: "oioi")
 
-    
-      # connection.exec("INSERT INTO peeps (content, user_id, timestamp) VALUES ('Hello Arnie', '1', '2021-02-02 13:06:07.980079');")
-      # connection.exec("INSERT INTO peeps (content, user_id, timestamp)  VALUES ('Get to the chopper', '1', '2021-02-02 13:06:55.945688');")
-      # connection.exec("INSERT INTO peeps (content, user_id, timestamp)   VALUES ('Aint got time to bleed', '2', '2021-02-02 13:07:07.876132');")
-      Peep.create("INSERT INTO peeps (, , ) VALUES (content: 'Hello Arnie', user_id: '1', timestamp:'2021-02-02 13:06:07.980079');")
-      # Peep.create("INSERT INTO peeps (content, user_id, timestamp)  VALUES ('Get to the chopper', '1', '2021-02-02 13:06:55.945688');")
-      Peep.create("INSERT INTO peeps (content, user_id, timestamp)   VALUES ('Aint got time to bleed', '2', '2021-02-02 13:07:07.876132');")
+      peep = Peep.create(content: 'Hello Arnie')
+      Peep.create(content: 'Get to the chopper')
+      Peep.create(content: 'Aint got time to bleed')
+      
+      peeps = Peep.all  
 
-      peep = Peep.all  
-
-      expect(peep).to include('Hello Arnie', '2021-02-02 13:06:07.980079')
-      expect(peep).to include('Get to the chopper', '2021-02-02 13:06:55.945688')
-      expect(peep).to include('Aint got time to bleed', '2021-02-02 13:07:07.876132')
+      expect(peeps.length).to eq 3
+      expect(peeps.first).to be_a Peep
+      expect(peeps.first.id).to eq peep.id
+      expect(peeps.first.content).to eq 'Hello Arnie'
+      expect(peeps.first.timestamp).to eq peep.timestamp
     end
   end 
   describe '.create' do 
     it 'creates a new peep' do 
-        Peep.create(content: 'And now we are here(10)')
+        peep = Peep.create(content: 'And now we are here(10)')
+        persisted_data = PG.connect(dbname: 'chitter_manager_test').query("SELECT * FROM peeps WHERE id = #{peep.id};")
 
-        expect(Peep.all).to include 'And now we are here(10)'
+        expect(peep).to be_a Peep
+        expect(peep.id).to eq persisted_data.first['id']
+        expect(peep.content).to eq 'And now we are here(10)'
+        expect(peep.timestamp).to eq persisted_data.first['timestamp']
       end
     end
-
 end 
 

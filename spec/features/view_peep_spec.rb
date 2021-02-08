@@ -2,11 +2,10 @@ require 'pg'
 
 feature 'View all peeps' do 
   scenario 'A user can view all peeps' do 
-    connection = PG.connect(dbname: 'chitter_manager_test')
-
-    connection.exec("INSERT INTO peeps (content, user_id) VALUES ('Hello Arnie', '1');")
-    connection.exec("INSERT INTO peeps (content, user_id)  VALUES ('Get to the chopper', '1');")
-    connection.exec("INSERT INTO peeps (content, user_id)  VALUES ('Aint got time to bleed', '2');")
+    
+    Peep.create(content: 'Hello Arnie')
+    Peep.create(content: 'Get to the chopper')
+    Peep.create(content: 'Aint got time to bleed')
 
     visit('/peeps')
 
