@@ -9,15 +9,15 @@ describe Peep do
       # user1 = User.create(email: "maggieh@gmail.com", password: "oioi")
 
     
-      connection.exec("INSERT INTO peeps (content, user_id) VALUES ('Hello Arnie', '1');")
-      connection.exec("INSERT INTO peeps (content, user_id)  VALUES ('Get to the chopper', '1');")
-      connection.exec("INSERT INTO peeps (content, user_id)  VALUES ('Aint got time to bleed', '2');")
+      connection.exec("INSERT INTO peeps (content, user_id, timestamp) VALUES ('Hello Arnie', '1', '2021-02-02 13:06:07.980079');")
+      connection.exec("INSERT INTO peeps (content, user_id, timestamp)  VALUES ('Get to the chopper', '1', '2021-02-02 13:06:55.945688');")
+      connection.exec("INSERT INTO peeps (content, user_id, timestamp)   VALUES ('Aint got time to bleed', '2', '2021-02-02 13:07:07.876132');")
 
       peep = Peep.all  
 
-      expect(peep).to include('Hello Arnie')
-      expect(peep).to include('Get to the chopper')
-      expect(peep).to include('Aint got time to bleed')
+      expect(peep).to include('Hello Arnie', '2021-02-02 13:06:07.980079')
+      expect(peep).to include('Get to the chopper', '2021-02-02 13:06:55.945688')
+      expect(peep).to include('Aint got time to bleed', '2021-02-02 13:07:07.876132')
     end
   end 
   describe '.create' do 
