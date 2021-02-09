@@ -1,5 +1,5 @@
  <ul>
   <% @peeps.each do |peep| %>
-    <li><%= peep %></li>
+    <li><h2>Peep:<%= peep.content %></h2> <h6>Posted at:<%= peep.timestamp %></h6></li>
   <% end %>
 </ul>
