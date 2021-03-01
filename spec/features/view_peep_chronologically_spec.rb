@@ -1,9 +1,9 @@
 feature 'Viewing peep in chronological order' do 
   scenario 'Peeps are displayed in chronological order' do 
 
-   peep_one =  Peep.create(content: 'Hello Arnie')
-   peep_two =  Peep.create(content: 'Get to the chopper')
-   peep_three =  Peep.create(content: 'Aint got time to bleed')
+    peep_one = Peep.create(content: 'Hello Arnie')
+    peep_two = Peep.create(content: 'Get to the chopper')
+    peep_three = Peep.create(content: 'Aint got time to bleed')
     
     visit('/peeps')
 
