@@ -9,3 +9,4 @@ gem 'pg'
 gem 'rspec'
 gem "rubocop", "0.79.0" 
 gem 'sinatra'
+gem 'bcrypt'
