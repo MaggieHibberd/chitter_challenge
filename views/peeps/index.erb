@@ -1,9 +1,20 @@
+<a href="/peeps/new">POST NEW PEEP</a>
+<a href="/users/new">SIGN UP</a>
+<a href="/sessions/new">LOG-IN</a>
+<h2>
+<%= flash[:notice] %>
+</h2>
+
 <% if @user %>
   <h1>Welcome, <%= @user.username %>!</h1>
 <% end %>
 
  <ul>
   <% @peeps.each do |peep| %>
-    <li><h2>Peep:<%= peep.content %></h2> <h6>Posted at:<%= peep.timestamp %></h6></li>
+    <li><h2><%= peep.content %></h2> <h6>Posted at: <%= Date.parse(peep.timestamp) %></h6></li>
   <% end %>
 </ul>
+
+<form action="/sessions/destroy" method="post">
+  <input type="submit" value="Sign out" />
+</form>
