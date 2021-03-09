@@ -7,8 +7,8 @@ feature 'Viewing peep in chronological order' do
     
     visit('/peeps')
 
-    expect(page).to have_selector("ul li:nth-child(3)", text: peep_one.timestamp)
-    expect(page).to have_selector("ul li:nth-child(2)", text: peep_two.timestamp)
-    expect(page).to have_selector("ul li:nth-child(1)", text: peep_three.timestamp)
+    expect(page).to have_selector("ul li:nth-child(3)", text: Date.parse(peep_one.timestamp))
+    expect(page).to have_selector("ul li:nth-child(2)", text: Date.parse(peep_two.timestamp))
+    expect(page).to have_selector("ul li:nth-child(1)", text: Date.parse(peep_three.timestamp))
   end 
 end
