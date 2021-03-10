@@ -1,6 +1,18 @@
-<a href="/peeps/new">POST NEW PEEP</a>
-<a href="/users/new">SIGN UP</a>
-<a href="/sessions/new">LOG-IN</a>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/styles.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+</head>
+<body>  
+<div class="top-right">
+<a class="button" href="/peeps/new">NEW PEEP</a>
+<a class="button" href="/users/new">SIGN UP</a>
+<a class="button" href="/sessions/new">LOG-IN</a>
+</div>
+
+<h1><a href="/peeps">Chitter</a></h1>
 <h2>
 <%= flash[:notice] %>
 </h2>
@@ -9,12 +21,18 @@
   <h1>Welcome, <%= @user.username %>!</h1>
 <% end %>
 
+<div class="peeps">
  <ul>
   <% @peeps.each do |peep| %>
-    <li><h2><%= peep.content %></h2> <h6>Posted at: <%= Date.parse(peep.timestamp) %></h6></li>
+    <li><h2><%= peep.content %></h2> <h6>Posted on: <%= Date.strptime(peep.timestamp)  %></h6></li>
   <% end %>
 </ul>
+</div>
+
 
 <form action="/sessions/destroy" method="post">
-  <input type="submit" value="Sign out" />
+  <input class="real-button" type="submit" value="SIGN OUT" />
 </form>
+</body>
+</html>
+
