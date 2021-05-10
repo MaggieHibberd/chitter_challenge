@@ -4,8 +4,6 @@ require 'database_helpers'
 describe Peep do 
   describe '.all' do 
     it 'returns all of the peeps' do 
-      # below may be of use when we add users
-      # user1 = User.create(email: "maggieh@gmail.com", password: "oioi")
 
       peep = Peep.create(content: 'Hello Arnie')
       Peep.create(content: 'Get to the chopper')
