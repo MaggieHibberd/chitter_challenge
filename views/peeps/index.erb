@@ -24,7 +24,7 @@
 <div class="peeps">
  <ul>
   <% @peeps.each do |peep| %>
-    <li><h2><%= peep.content %></h2> <h6>Posted on: <%= Date.strptime(peep.timestamp)  %></h6></li>
+    <li><h2><%= peep.content %></h2> <h6><%= Time.parse(peep.timestamp).strftime("Peeped on %m/%d/%Y")  %>  <%= Time.parse(peep.timestamp).strftime("at %I:%M%p")  %></h6></li>
   <% end %>
 </ul>
 </div>

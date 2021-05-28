@@ -1,11 +1,32 @@
 Chitter Challenge
 =================
 
+# Instructions
+ - Clone the repo
+ - run bundle
+
+## Install database
+ - $ brew install postgresql
+ - brew services start postgresql
+ To connect with postgress:
+ - psql postgres
+ - To create the database please refer to the CREATE_DATABASE.sql file in the DB folder
+
+## Run your local server
+ - run rackup 
+ - open browser address http://localhost:9292/
+
+## Security
+
+### Passwords
+
+Passwords are stored in database as bcrypt hashes. pgcrypto postgresql extension utilised for this
+
 Features:
 -------
 
 ```
-STRAIGHT UP
+User Stories
 
 As a Maker
 So that I can let people know what I am doing  
