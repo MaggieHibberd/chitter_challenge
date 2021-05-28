@@ -43,7 +43,7 @@ feature 'authentication' do
     
     click_button('Sign in')
 
-    click_button('Sign out')
+    click_button('SIGN OUT')
 
     expect(page).not_to have_content 'Welcome, test@example.com'
     expect(page).to have_content 'You have signed out.'
